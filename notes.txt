@@ -1,0 +1,16 @@
+			//the task stack range is [176, 512] (programming guide)
+			//The highest priority of the RTOS SDK is 14, Priority of the pp task is 13; priority of precise timer (ms) thread is 12;
+			//priority of the TCP/IP task is 10; priority of the freeRTOS timer is 2; priority of the idle task is 0.
+
+1. SDK и Makefile вернул на версию 130 (+ patch 132), стало компелироваться,
+на версии 140 выдавало ошибку: "app.out section `.text' will not fit in region `iram1_0_seg'"
+
+Возможно, т.к. не помещается в 240кбт, как компилировать на 512 пока не понятно
+
+2. CFG_Load() можно перенести в функцию TurnWifiOn()
+
+HTML
+3. Пока в броузере не нажать стоп (или, возможно, он не получит ответ от сервера),
+   не станет read() <= 0
+   
+4. Нужно считать все из read(), иначе браузео не принимает данные (страницу) в ответ
